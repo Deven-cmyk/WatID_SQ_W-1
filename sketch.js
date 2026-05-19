@@ -1,44 +1,38 @@
-let diceImg;
+let dice1X = 0;
+let dice2X = -200;
 
-let dice1X, dice2X;
 let speed = 4;
-
-function preload() {
-  diceImg = loadImage("dice.jpg");
-}
 
 function setup() {
   createCanvas(800, 600);
-
-  dice1X = 0;
-  dice2X = -300;
 }
 
 function draw() {
   // 🌤 Sky blue background
   background(135, 206, 235);
 
-  drawJengaTower();
+  drawJenga();
   drawDice();
   drawText();
 }
 
-// 🧱 JENGA TOWER (center)
-function drawJengaTower() {
+// 🧱 JENGA TOWER
+function drawJenga() {
   rectMode(CENTER);
   noStroke();
 
   let blockW = 90;
   let blockH = 20;
-  let baseY = height / 2 + 120;
+  let startY = height / 2 + 120;
 
   for (let i = 0; i < 12; i++) {
-    let y = baseY - i * blockH;
+    let y = startY - i * blockH;
 
     let horizontal = i % 2 === 0;
 
     for (let j = -1; j <= 1; j++) {
-      fill(210, 180, 140); // light wood color
+      // soft wood color (compliments blue)
+      fill(210, 180, 140);
 
       if (horizontal) {
         rect(width / 2 + j * 30, y, blockW, blockH, 4);
@@ -49,37 +43,56 @@ function drawJengaTower() {
   }
 }
 
-// 🎲 MOVING DICE + MOTION TRAIL
+// 🎲 DICE (drawn with shapes instead of image)
 function drawDice() {
-  // Motion trail shapes
-  for (let i = 0; i < 5; i++) {
-    fill(255, 255, 255, 50 - i * 10);
-    noStroke();
-    ellipse(dice1X - i * 20, height / 2 - 50, 40, 40);
-    ellipse(dice2X - i * 20, height / 2 + 50, 40, 40);
-  }
+  drawSingleDice(dice1X, height / 2 - 60, true);
+  drawSingleDice(dice2X, height / 2 + 20, false);
 
-  // Draw dice images
-  image(diceImg, dice1X, height / 2 - 80, 60, 60);
-  image(diceImg, dice2X, height / 2 + 20, 60, 60);
-
-  // Move dice
   dice1X += speed;
   dice2X += speed;
 
-  // Loop animation
-  if (dice1X > width) {
-    dice1X = -100;
+  // loop
+  if (dice1X > width) dice1X = -100;
+  if (dice2X > width) dice2X = -200;
+}
+
+// 🎲 ONE DIE + TRAIL
+function drawSingleDice(x, y, flip) {
+  // ✨ motion trail
+  for (let i = 0; i < 5; i++) {
+    fill(255, 255, 255, 60 - i * 10);
+    ellipse(x - i * 20, y + 25, 40);
   }
-  if (dice2X > width) {
-    dice2X = -200;
+
+  // 🎲 dice body
+  fill(255);
+  stroke(0);
+  rect(x, y, 50, 50, 8);
+
+  // 🎯 dots
+  fill(0);
+  noStroke();
+
+  // center dot
+  ellipse(x + 25, y + 25, 8);
+
+  if (flip) {
+    ellipse(x + 10, y + 10, 8);
+    ellipse(x + 40, y + 40, 8);
+  } else {
+    ellipse(x + 40, y + 10, 8);
+    ellipse(x + 10, y + 40, 8);
   }
 }
 
-// 📝 TEXT
+// 📝 TEXT (you can replace with your about me)
 function drawText() {
   fill(50);
-  textSize(32);
+  textSize(26);
   textAlign(CENTER);
-  text("Jenga Motion", width / 2, 50);
+
+  text("Jenga Motion Scene", width / 2, 40);
+
+  textSize(14);
+  text("By Deven Agnihotri", width / 2, 65);
 }
