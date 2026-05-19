@@ -1,38 +1,50 @@
-# Week 1 Example 1: Images and Shapes
+# Jenga Motion Scene
 
-## What This Example Demonstrates
+## Project Description
 
-> **Note for students:** This section is included in example files only to help you study. Do not include it in your Side Quest submissions.
+This project is a p5.js sketch inspired by the game Jenga. The scene features a stacked Jenga tower in the center of the screen, with two animated dice moving across the frame. The dice loop continuously, creating a sense of motion and repetition similar to a game loop.
 
-This example introduces how to load and display images alongside shapes drawn with p5.js code.
+The design uses a sky blue background with warm wood tones for the Jenga blocks to create a balanced and visually appealing color palette.
 
-- `preload()` — loads images and sounds before the sketch starts, so they are ready to use in `setup()` and `draw()`
-- `setup()` — runs once at the start; used here to draw everything since nothing needs to animate
-- `draw()` — runs on a loop after `setup()`; left empty here since the sketch is static
-- `image()` — draws a loaded image onto the canvas at a specified position and size
-- `rect()`, `ellipse()`, `line()` — basic shape functions used to build the controller drawing
-- `fill()`, `stroke()`, `strokeWeight()` — control the colour and outline of shapes and text
-- `text()`, `textSize()`, `textAlign()` — display and style text on the canvas
-- `mousePressed()` — runs code automatically each time the mouse is clicked
-- `keyPressed()` — runs code automatically each time a key is pressed; used here as a debug tool to log mouse coordinates
+---
 
 ## Setup and Interaction Instructions
 
-To run the sketch locally, open `index.html` in Google Chrome. No additional setup is required.
+### How to Run
 
-To play via GitHub Pages, visit the link provided on the submission page.
+1. Open the project folder in Visual Studio Code
+2. Right-click `index.html`
+3. Select **Open with Live Server**
+4. The sketch will open in your browser (Google Chrome recommended)
 
-**How to interact:**
+### How to Interact
 
-- Click anywhere on the canvas to draw a random-coloured circle at that position.
-- Press **k** to log the current mouse coordinates to the Chrome console (useful for positioning shapes).
+- This sketch runs automatically
+- The dice move continuously across the screen in a loop
+- There is no user interaction required
+
+---
 
 ## Assets
 
-| File | Source |
-|------|--------|
-| `assets/images/controller.png` | Drawn by Karen Cochrane |
+This project does not use any external image or audio assets.
+
+All visuals (Jenga tower, dice, motion effects) are created using p5.js shapes such as:
+
+- `rect()`
+- `ellipse()`
+
+---
 
 ## References
 
-N/A
+p5.js Documentation  
+https://p5js.org/reference/
+
+Processing Foundation. (n.d.). _p5.js reference_. Retrieved from https://p5js.org/reference/
+
+---
+
+## Author
+
+Deven Agnihotri
